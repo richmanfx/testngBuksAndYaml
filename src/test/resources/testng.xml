@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing1">
+    <test name="testik1">
+        <groups>
+            <run>
+                <include name="firstgroup"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ru.r5am.ASD0101_01"/>
+        </classes>
+    </test>
+</suite>
