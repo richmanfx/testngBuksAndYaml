@@ -1,8 +1,6 @@
 group 'ru.r5am'
 version '1.0.0'
 
-// import org.yaml.snakeyaml.Yaml
-
 apply plugin: 'java'
 
 tasks.withType(JavaCompile) {
@@ -16,16 +14,12 @@ buildscript {
         mavenCentral()
         mavenLocal()
         jcenter()
-//        flatDir {
-//            dirs "lib"
-//        }
     }
 
     dependencies {
         classpath "org.yaml:snakeyaml:+"
     }
 }
-
 
 repositories {
     mavenCentral()
@@ -34,7 +28,6 @@ repositories {
 }
 
 dependencies {
-
     compile 'org.apache.logging.log4j:log4j-slf4j-impl:+'
     compile 'org.apache.logging.log4j:log4j-core:+'
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:+'
@@ -46,7 +39,6 @@ dependencies {
 test {
 //    systemProperty('file.encoding': 'utf-8')
     useTestNG() {
-        suites './src/test/resources/testng.yaml'
     }
     return void
 }
@@ -64,7 +56,6 @@ task runTests(type: JavaExec, dependsOn: 'classes') {
 }
 
 // Задача для запуска тестов TestNG на основе testng.yaml в командной строке Gradle
-    // TODO: Пока не работает!
 task runTestsYaml(type: JavaExec, dependsOn: 'classes') {
     main = 'org.testng.TestNG'
     classpath = files("./src/test/resources",

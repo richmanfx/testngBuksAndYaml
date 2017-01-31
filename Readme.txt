@@ -6,11 +6,19 @@
 
  - Если тест находится в классе, который не указан в testng.xml, то тест не выполняется.
 
- - Имена тестов с '$':
-
  - Конфиг в YAML:
+    name: Testing1
+    tests:
+      - name: testik1
+        includedGroups:
+          - firstgroup
+          - secondgroup
+    #    excludedGroups: [ broken ]
+        classes:
+          - ru.r5am.ASD0101_01
+          - ru.r5am.ASD0101_02
 
-
+ - Имена тестов с '$':
 
 
 

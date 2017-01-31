@@ -1,5 +1,7 @@
 package ru.r5am;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 /**
@@ -8,6 +10,8 @@ import org.testng.annotations.Test;
  */
 public class ASD0101_01 {
 
+    Logger log = LogManager.getLogger(ASD0101_01.class);
+//    log.  info("Начало работы.")
 
     @Test(groups = {"firstgroup"})
     public void testMethod1() {
