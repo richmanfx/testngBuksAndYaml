@@ -1,0 +1,10 @@
+name: Testing1
+
+tests:
+  - name: testik1
+    includedGroup: [ firstgroup ]
+    includedGroup: [ secondgroup ]
+#    excludedGroups: [ broken ]
+    classes:
+      - ru.r5am.ASD0101_01
+      - ru.r5am.ASD0101_02

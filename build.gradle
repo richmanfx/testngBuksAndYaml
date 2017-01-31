@@ -1,6 +1,8 @@
 group 'ru.r5am'
 version '1.0.0'
 
+// import org.yaml.snakeyaml.Yaml
+
 apply plugin: 'java'
 
 tasks.withType(JavaCompile) {
@@ -8,6 +10,22 @@ tasks.withType(JavaCompile) {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        jcenter()
+//        flatDir {
+//            dirs "lib"
+//        }
+    }
+
+    dependencies {
+        classpath "org.yaml:snakeyaml:+"
+    }
+}
+
 
 repositories {
     mavenCentral()
@@ -22,10 +40,38 @@ dependencies {
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:+'
     compile 'com.fasterxml.jackson.core:jackson-databind:+'
     testCompile 'org.testng:testng:+'
+    testCompile 'org.yaml:snakeyaml:+'
 }
 
 test {
 //    systemProperty('file.encoding': 'utf-8')
-    useTestNG()
+    useTestNG() {
+        suites './src/test/resources/testng.yaml'
+    }
     return void
+}
+
+// Задача для запуска тестов TestNG на основе testng.xml в командной строке Gradle
+task runTests(type: JavaExec, dependsOn: 'classes') {
+    main = 'org.testng.TestNG'
+    classpath = files("./src/test/resources",
+            project.sourceSets.main.compileClasspath,
+            project.sourceSets.test.compileClasspath,
+            project.sourceSets.main.runtimeClasspath,
+            project.sourceSets.test.runtimeClasspath)
+    args = ["-parallel",  "methods", "-threadcount", "1", "-d",
+            "./build/test-output", "./src/test/resources/testng.xml"]
+}
+
+// Задача для запуска тестов TestNG на основе testng.yaml в командной строке Gradle
+    // TODO: Пока не работает!
+task runTestsYaml(type: JavaExec, dependsOn: 'classes') {
+    main = 'org.testng.TestNG'
+    classpath = files("./src/test/resources",
+            project.sourceSets.main.compileClasspath,
+            project.sourceSets.test.compileClasspath,
+            project.sourceSets.main.runtimeClasspath,
+            project.sourceSets.test.runtimeClasspath,)
+    args = ["-parallel",  "methods", "-threadcount", "1", "-d",
+            "./build/test-output", "./src/test/resources/testng.yaml"]
 }

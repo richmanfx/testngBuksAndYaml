@@ -3,11 +3,10 @@ package ru.r5am;
 import org.testng.annotations.Test;
 
 /**
- * Created by Zoer on 30.01.2017.
+ * Created by Admin on 31.01.2017.
  *
  */
-public class ASD0101_01 {
-
+public class ASD0101_02 {
 
     @Test(groups = {"firstgroup"})
     public void testMethod1() {

@@ -5,10 +5,12 @@
         <groups>
             <run>
                 <include name="firstgroup"/>
+                <!--<include name="secondgroup"/>-->
             </run>
         </groups>
         <classes>
             <class name="ru.r5am.ASD0101_01"/>
+            <class name="ru.r5am.ASD0101_02"/>
         </classes>
     </test>
 </suite>
